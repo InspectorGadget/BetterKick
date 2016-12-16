@@ -21,7 +21,7 @@ class MainClass extends PluginBase implements Listener {
 	}
 
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
-		switch($command->getName()){
+		switch(strtolower($command->getName())){
 		
 			case "example":
 				$sender->sendMessage("Hello ".$sender->getName()."!");
@@ -38,7 +38,7 @@ class MainClass extends PluginBase implements Listener {
 
 					$sender->sendMessage("Hello ".$sender->getName()."!");
 
-					$event-setCancelled(true); //Doesn't do the old command
+					$event->setCancelled(true); //Doesn't do the old command
 			}
 	}
 	
