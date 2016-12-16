@@ -6,7 +6,7 @@ api: [1.0.0, 2.0.0]
 
 load: POSTWORLD
 author: Smasher535
-description: Kicks players without "Kicked by Admin:"
+description: "Kicks players without 'Kicked by Admin:'"
 commands:
  example:
   description: Kicks the specified player!
