@@ -1,0 +1,18 @@
+#main, version and api are required
+name: BetterKick
+main: BetterKick\MainClass
+version: 1.0.0
+api: [1.0.0, 2.0.0]
+
+load: POSTWORLD
+author: Smasher535
+description: Kicks players without "Kicked by Admin:"
+commands:
+ example:
+  description: Kicks the specified player!
+  usage: "Usage: /kick"
+  permission: betterkick.command.kick
+permissions:
+ betterkick.command.kick:
+  description: "Allows the user to kick other players."
+  default: op
