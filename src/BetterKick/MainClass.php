@@ -2,44 +2,53 @@
 
 namespace BetterKick;
 
-use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
-use pocketmine\event\Listener;
-use pocketmine\event\player\PlayerRespawnEvent;
-use pocketmine\event\player\PlayerCommandPreProcessEvent;
-use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
+use pocketmine\event\Listener;
+use pocketmine\command\Command;
+use pocketmine\Player;
 use pocketmine\Server;
-use pocketmine\utils\TextFormat;
+use pocketmine\command\CommandSender;
+use pocketmine\event\player\PlayerCommandPreProcessEvent;
 
 class MainClass extends PluginBase implements Listener {
-
-	public function onEnable(){
 	
+	public function onEnable() {
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-		$this->getLogger()->info("BetterKick succefully enabled!");
+		// add logger here
 	}
-
-	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
-		switch(strtolower($command->getName())){
+	
+	public function onCommand(CommandSender $sender, Command $cmd, $label, array $param) {
+		switch(strtolower($cmd->getName())) {
 		
 			case "example":
-				$sender->sendMessage("Hello ".$sender->getName()."!");
+				
+				$sender->sendMessage("Hi " . $sender->getName() . "!");
+			
 				return true;
 			break;
-			
+		
 		}
 	}
-
-	public function onSay(PlayerCommandPreProcessEvent $event){
-		$msg = $event->getMessage();
-		$msgg = explode(" ", $msg);
-			if($msgg == "/kick"){
-
-					$sender->sendMessage("Hello ".$sender->getName()."!");
-
-					$event->setCancelled(true); //Doesn't do the old command
-			}
+	
+	public function onCMD(PlayerCommandPreProcessEvent $e) {
+		
+		$msg = $e->getMessage();
+		
+		$ex = explode(" ", $msg);
+		
+		/**
+			* 'explode' explodes the messages to arrays
+			* $ex[0]
+			* $ex[1] 
+		*/
+		
+		if($ex[0] === "/kick") { // === works better than ==
+			
+			// Your lines here
+			
+			$e->setCancelled(true);
+			
+		}
 	}
 	
 	public function onDisable() {
